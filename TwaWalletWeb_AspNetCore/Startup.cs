@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace TwaWalletWeb_AspNetCore
 {
+    // jeď podle tohoto tutorialu, ale udělej to na MODEL dle TwaWallet
+    // TODO: pokračuj v kapitole:
+    // TODO: https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-view
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -43,6 +46,7 @@ namespace TwaWalletWeb_AspNetCore
             {
                 routes.MapRoute(
                     name: "default",
+                    // /[Controller]/[ActionName]/[Parameters]
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
