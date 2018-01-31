@@ -6,12 +6,18 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using TwaWalletWeb_AspNetCore.Models;
 
 namespace TwaWalletWeb_AspNetCore
 {
-    // jeď podle tohoto tutorialu, ale udělej to na MODEL dle TwaWallet
-    // TODO: pokračuj v kapitole:
-    // TODO: https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-view
+
+    /// <summary>
+    /// MVC app (nejedná se o Razor app)
+    /// jeď podle tohoto tutorialu, ale udělej to na MODEL dle TwaWallet
+    /// TODO: pokračuj v kapitole:
+    /// TODO: https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?tabs=aspnetcore2x
+    /// </summary>
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -25,6 +31,9 @@ namespace TwaWalletWeb_AspNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<TwaWalletWeb_AspNetCoreContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("TwaWalletWeb_AspNetCoreContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

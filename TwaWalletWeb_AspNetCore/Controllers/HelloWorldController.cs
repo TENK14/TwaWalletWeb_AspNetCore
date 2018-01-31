@@ -9,7 +9,7 @@ using System.Text.Encodings.Web;
 
 namespace TwaWalletWeb_AspNetCore.Controllers
 {
-    /// <summary>
+    /// <summary>    
     /// https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-controller
     /// Every public method in a controller is callable as an HTTP endpoint. In the sample above, both methods return a string. Note the comments preceding each method.8
     /// An HTTP endpoint is a targetable URL in the web application, such as http://localhost:1234/HelloWorld, and combines the protocol used: HTTP, the network location of the web server (including the TCP port): localhost:1234 and the target URI HelloWorld.
@@ -26,17 +26,26 @@ namespace TwaWalletWeb_AspNetCore.Controllers
         // 
         // GET: /HelloWorld/
 
-        public string Index()
+        /// <summary>
+        /// Metody Controlleru (známé jako akční metody), jako je např. Inde() obecně vracejí IActionResult
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Index()
         {
-            return "This is my default action...";
+            return View(); // vrátí view template pro vygenerování HTML odpovědi browseru.
+
         }
 
         // 
         // GET: /HelloWorld/Welcome/ 
 
-        public string Welcome()
+        // http://localhost:50656/HelloWorld/Welcome?name=Rick&numTimes=4
+        public IActionResult Welcome(string name, int numTimes = 1)
         {
-            return "This is the Welcome action method...";
+            ViewData["Message"] = "Hello " + name;
+            ViewData["NumTimes"] = numTimes;
+
+            return View();
         }
 
         /// <summary>

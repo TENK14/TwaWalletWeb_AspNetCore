@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging;
 
 namespace TwaWalletWeb_AspNetCore
 {
+    /// <summary>
+    /// MVC app (nejedná se o Razor app)
+    /// </summary>
     public class Program
     {
         public static void Main(string[] args)
