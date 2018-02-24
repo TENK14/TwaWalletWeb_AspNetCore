@@ -139,7 +139,7 @@ namespace TwaWalletWeb_AspNetCore.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var movie = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
-            _context.Movie.Remove(movie);
+            _context.Movie.Remove(movie); // TODO: predelat na soft-delete
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
